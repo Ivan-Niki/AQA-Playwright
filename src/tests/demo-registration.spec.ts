@@ -63,11 +63,6 @@ test.describe("[Demo-login-form] [Register]", () => {
         confirmPassword: "MySecretPassword",
     };
 
-    const testCredentials: ICredentials[] = [
-
-    ];
-
-
     // ====================== Positive test ==========================
     // test 1.
     test("Should register with valid data", async ({ page }) => {
@@ -81,8 +76,8 @@ test.describe("[Demo-login-form] [Register]", () => {
         const phoneInput = page.locator("#phone");
         const countryDropdown = page.locator("#country");
 
-        const maleRadio = page.locator('input[type="radio"][value="male"]');
-        const femaleRadio = page.locator('input[type="radio"][value="female"]');
+        const maleRadio = page.locator('input[value="male"]');
+        const femaleRadio = page.locator('input[value="female"]');
 
         const hobbieSportsCheckbox = page.locator('input[value="Sports"]');
 
@@ -98,17 +93,17 @@ test.describe("[Demo-login-form] [Register]", () => {
 
         // Registration Details
         const regDetailsHeader = page.locator('//h2[contains(text(), "Registration Details")]');
-        const regDetailsFullnameValue = page.locator('span[id="fullName"]');
-        const regDetailsAddressValue = page.locator('span[id="address"]');
-        const regDetailsEmailValue = page.locator('span[id="email"]');
-        const regDetailsPhoneValue = page.locator('span[id="phone"]');
-        const regDetailsCountryValue = page.locator('span[id="country"]');
-        const regDetailsGenderValue = page.locator('span[id="gender"]');
-        const regDetailsLanguageValue = page.locator('span[id="language"]');
-        const regDetailsSkillsValue = page.locator('span[id="skills"]');
-        const regDetailsHobbiesValue = page.locator('span[id="hobbies"]');
-        const regDetailsDateOfBirthValue = page.locator('span[id="dateOfBirth"]');
-        const regDetailsPasswordValue = page.locator('span[id="password"]');
+        const regDetailsFullnameValue = page.locator('span#fullName');
+        const regDetailsAddressValue = page.locator('span#address');
+        const regDetailsEmailValue = page.locator('span#email');
+        const regDetailsPhoneValue = page.locator('span#phone');
+        const regDetailsCountryValue = page.locator('span#country');
+        const regDetailsGenderValue = page.locator('span#gender');
+        const regDetailsLanguageValue = page.locator('span#language');
+        const regDetailsSkillsValue = page.locator('span#skills');
+        const regDetailsHobbiesValue = page.locator('span#hobbies');
+        const regDetailsDateOfBirthValue = page.locator('span#dateOfBirth');
+        const regDetailsPasswordValue = page.locator('span#password');
         // const backtoFormButton = page.locator('//button[@onclick="renderRegistrationForm()")]');
 
         await firstNameInput.fill(validCredentials.fullname.firstname);
@@ -143,7 +138,7 @@ test.describe("[Demo-login-form] [Register]", () => {
         await expect(regDetailsLanguageValue).toHaveText(validCredentials.language);
         await expect(regDetailsSkillsValue).toHaveText(validCredentials.skills);
         await expect(regDetailsHobbiesValue).toContainText(validCredentials.hobbies);
-        await expect(regDetailsDateOfBirthValue).toHaveText(validCredentials.dateOfBirth.day + " " + validCredentials.dateOfBirth.month + " " + validCredentials.dateOfBirth.year);
+        await expect(regDetailsDateOfBirthValue).toHaveText(`${validCredentials.dateOfBirth.day} ${validCredentials.dateOfBirth.month} ${validCredentials.dateOfBirth.year}`);
 
     });
 
